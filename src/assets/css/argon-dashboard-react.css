@@ -1,7 +1,7 @@
 /*!
 
 =========================================================
-* Argon Dashboard React - v1.2.1
+* Argon Dashboard React - v1.2.0
 =========================================================
 
 * Product Page: https://www.creative-tim.com/product/argon-dashboard-react
@@ -3001,7 +3001,7 @@ input[type="button"].btn-block {
 .custom-checkbox .custom-control-input:indeterminate ~ .custom-control-label::before {
   border-color: #5e72e4;
   background-color: #5e72e4;
-  box-shadow:; }
+  box-shadow:2px 2px 2px; }
 
 .custom-checkbox .custom-control-input:indeterminate ~ .custom-control-label::after {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3e%3cpath stroke='%23fff' d='M0 2h4'/%3e%3c/svg%3e"); }
@@ -12115,6 +12115,7 @@ a.btn-icon-only {
       padding-right: 39px !important; } }
 
 .navbar-vertical.navbar-expand-xs.fixed-left + .main-content {
+ 
   margin-left: 250px; }
 
 .navbar-vertical.navbar-expand-xs.fixed-right + .main-content {
