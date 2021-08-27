@@ -3,6 +3,10 @@
   "version": "1.2.0",
   "description": "Karshika Vipani - A website by Vibgreenyor",
   "main": "index.js",
+
+  "engines": {
+    "node":"14.x"
+  },
   
   "keywords": [
     "react",

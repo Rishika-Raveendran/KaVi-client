@@ -15,7 +15,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React,{useState} from "react";
+import React, { useState } from "react";
 import Axios from 'axios';
 import 'react-router-dom';
 
@@ -35,39 +35,40 @@ import {
   Col,
 } from "reactstrap";
 import { useHistory } from "react-router-dom";
+import baseUrl from "utils/baseUrl";
 
-const Login = ({setIsLoggedIn}) => {
+const Login = ({ setIsLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
 
   //handling login after clicking submit button
-  const  handleLogin = async() => {
-   var user= await Axios.post("http://localhost:3001/login", {
-       username:username,
-       password:password,
-   })
+  const handleLogin = async () => {
+    var user = await Axios.post(`${baseUrl}/login`, {
+      username: username,
+      password: password,
+    })
     if (user.status == 200) {
       //setting local and session storage
-      window.localStorage.setItem('user',user.data.user.username);
+      window.localStorage.setItem('user', user.data.user.username);
       window.sessionStorage.setItem('user', user.data.user.username);
       setIsLoggedIn(true);
-      
-      history.replace("/","urlhistory");
-   
-  }
-    else  {
+
+      history.replace("/", "urlhistory");
+
+    }
+    else {
       user.msg ? console.log(user.msg) : console.log("error");
     }
 
-   }
+  }
   return (
     <>
       <Col lg="5" md="7">
         <Card className="bg-secondary shadow border-0">
           <CardHeader className="bg-transparent pb-5">
-           
-            
+
+
           </CardHeader>
           <CardBody className="px-lg-5 py-lg-5">
             <div className="text-center text-muted mb-4">
@@ -86,7 +87,8 @@ const Login = ({setIsLoggedIn}) => {
                     type="email"
                     onChange={(e) => {
                       setUsername(e.target.value)
-                    console.log(username)}}
+                      console.log(username)
+                    }}
                   />
                 </InputGroup>
               </FormGroup>
@@ -101,11 +103,11 @@ const Login = ({setIsLoggedIn}) => {
                     placeholder="Password"
                     type="password"
                     autoComplete="new-password"
-                    onChange={(e)=>{setPassword(e.target.value)}}
+                    onChange={(e) => { setPassword(e.target.value) }}
                   />
                 </InputGroup>
               </FormGroup>
-           
+
               <div className="text-center">
                 <Button className="my-4" color="primary" type="button" onClick={handleLogin}>
                   Sign in
