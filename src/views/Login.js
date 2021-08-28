@@ -64,15 +64,14 @@ const Login = ({ setIsLoggedIn }) => {
   }
   return (
     <>
-      <Col lg="5" md="7">
-        <Card className="bg-secondary shadow border-0">
+      <Col lg={{size:"4",offset:"4"}} md={{size:"6",offset:"3"}} sm={{size:"10",offset:"1"}} className="mt-7">
+        <Card className="bg-dark shadow border-0">
           <CardHeader className="bg-transparent pb-5">
-
-
+            <h3 className="text-light">LOGIN</h3>
           </CardHeader>
           <CardBody className="px-lg-5 py-lg-5">
             <div className="text-center text-muted mb-4">
-              <small>Or sign in with credentials</small>
+              <small>Sign in with credentials</small>
             </div>
             <Form role="form">
               <FormGroup className="mb-3">
@@ -83,8 +82,8 @@ const Login = ({ setIsLoggedIn }) => {
                     </InputGroupText>
                   </InputGroupAddon>
                   <Input
-                    placeholder="Email"
-                    type="email"
+                    placeholder="Username"
+                    type="username"
                     onChange={(e) => {
                       setUsername(e.target.value)
                       console.log(username)
@@ -109,7 +108,7 @@ const Login = ({ setIsLoggedIn }) => {
               </FormGroup>
 
               <div className="text-center">
-                <Button className="my-4" color="primary" type="button" onClick={handleLogin}>
+                <Button className="my-4" color="success" type="button" onClick={handleLogin}>
                   Sign in
                 </Button>
               </div>
@@ -119,7 +118,7 @@ const Login = ({ setIsLoggedIn }) => {
         <Row className="mt-3">
           <Col xs="6">
             <a
-              className="text-light"
+              className="text-dark"
               href="#pablo"
               onClick={(e) => e.preventDefault()}
             >
@@ -128,7 +127,7 @@ const Login = ({ setIsLoggedIn }) => {
           </Col>
           <Col className="text-right" xs="6">
             <a
-              className="text-light"
+              className="text-dark"
               href="#pablo"
               onClick={(e) => e.preventDefault()}
             >
