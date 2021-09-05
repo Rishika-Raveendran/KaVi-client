@@ -60,6 +60,9 @@ const Sidebar = (props) => {
   const activeRoute = (routeName) => {
     return props.location.pathname.indexOf(routeName) > -1 ? "active" : "";
   };
+
+  const {  routes,setIsLoggedIn, logo } = props;
+
   // toggles collapse between opened and closed (true/false)
   const toggleCollapse = () => {
     setCollapseOpen((data) => !data);
@@ -74,7 +77,7 @@ const Sidebar = (props) => {
     setConfirm(!confirm);
     localStorage.clear();
     sessionStorage.clear();
-    props.setIsLoggedIn(false);
+    setIsLoggedIn(false);
      // history.replace("/login","urlhistory");
   
   };
@@ -102,19 +105,11 @@ const Sidebar = (props) => {
     });
   };
 
-  const { bgColor, routes, logo } = props;
-  let navbarBrandProps;
-  if (logo && logo.innerLink) {
-    navbarBrandProps = {
+  let navbarBrandProps = {
       to: logo.innerLink,
       tag: Link,
     };
-  } else if (logo && logo.outterLink) {
-    navbarBrandProps = {
-      href: logo.outterLink,
-      target: "_blank",
-    };
-  }
+  
 
   return (
     <>
@@ -122,7 +117,7 @@ const Sidebar = (props) => {
       <Support show={show} setShow={setShow} />
 
       <Navbar
-        className="navbar-vertical fixed-left navbar-light bg-default"
+        className="navbar-vertical fixed-left navbar-light bg-darker"
         expand="md"
         id="sidenav-main"
       >
@@ -142,6 +137,7 @@ const Sidebar = (props) => {
                 alt={logo.imgAlt}
                 className="navbar-brand-img"
                 src={logo.imgSrc}
+                
               />
             </NavbarBrand>
           ) : null}

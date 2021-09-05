@@ -8,7 +8,7 @@ function ADADashboard(props) {
       <Container className="mt--9" fluid>
         <Row>
           <Col className="mb-5 mb-xl-0" xl="8">
-            <Card className="bg-gradient-default shadow">
+            <Card className="bg-darker shadow">
               <CardHeader className="bg-transparent">
                 <Row className="align-items-center">
                   <div className="col-12">
@@ -39,7 +39,7 @@ function ADADashboard(props) {
                       </form>
                     </div>
                     <div className="col-12 col-md-5 mt-4 mb-4">
-                      <button type="submit" class="btn btn-block btn-success ">
+                      <button type="submit" class="btn btn-block btn-primary ">
                         View overall report
                       </button>
                     </div>
@@ -56,6 +56,7 @@ function ADADashboard(props) {
                             data-style="btn btn-link"
                             id="exampleFormControlSelect1"
                           >
+                            {/* Dummy data */}
                             <option>KB001</option>
                             <option>KB002</option>
                             <option>KB003</option>
@@ -66,7 +67,7 @@ function ADADashboard(props) {
                       </form>
                     </div>
                     <div className="col-12 col-md-5 mt-4 mb-4">
-                      <button type="submit" class="btn btn-block btn-success ">
+                      <button type="submit" class="btn btn-block btn-primary">
                         View krishibhavan report
                       </button>
                     </div>
@@ -83,6 +84,7 @@ function ADADashboard(props) {
                             data-style="btn btn-link"
                             id="exampleFormControlSelect1"
                           >
+                            {/* Dummy data */}
                             <option>EcoShop 1</option>
                             <option>EcoShop 2</option>
                             <option>EcoShop 3</option>
@@ -93,7 +95,7 @@ function ADADashboard(props) {
                       </form>
                     </div>
                     <div className="col-12 col-md-5 mt-4 mb-4">
-                      <button type="submit" class="btn btn-block btn-success ">
+                      <button type="submit" class="btn btn-block btn-primary ">
                         View collection center report
                       </button>
                     </div>

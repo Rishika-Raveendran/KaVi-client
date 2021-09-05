@@ -1,15 +1,10 @@
 .footer {
-  position: fixed;
-  bottom: 0;
-  margin: 0;
-  margin-top: 2vh;
   padding: 0;
   padding-bottom: 2vh;
   width: calc(100vw - 330px);
   font-size: 10px;
 }
-.coltwo {  
-
+.coltwo {
   text-align: right;
   /* font-size: 10px; */
 }

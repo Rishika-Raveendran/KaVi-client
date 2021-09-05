@@ -73,7 +73,7 @@ const Admin = (props) => {
         setIsLoggedIn={props.setIsLoggedIn}
         logo={{
           innerLink: "",
-          imgSrc: require("../assets/img/brand/argon-react.png").default,
+          imgSrc: require("../assets/img/brand/logo.png").default,
           imgAlt: "...",
         }}
       />

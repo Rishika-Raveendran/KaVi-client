@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from "react";
-
 import { Route, Switch, Redirect } from "react-router-dom";
-import {} from "react-router";
-
 import "assets/plugins/nucleo/css/nucleo.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "assets/scss/argon-dashboard-react.scss";
-
 import Login from "views/Login";
 import CCDashboard from "components/Pages/Dashboards/ccDashboard";
 import UserProfile from "components/Pages/userProfile";
@@ -24,7 +20,7 @@ const App = () => {
   }, [isLoggedIn]);
 
   let route;
-
+//If logged in, the dashboard will be shown, otherwise, the login page
   if (isLoggedIn) {
     route = (
       <Switch>
@@ -42,6 +38,9 @@ const App = () => {
       </Switch>
     );
   } else {
+    //Planning to have different set of routes for each role based 
+    //on an additional variable 'role' that will be obtained from user data from database.
+    //Only collection centre set of routes are defined here
     route = (
       <Switch>
         <Route

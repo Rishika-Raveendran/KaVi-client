@@ -8,12 +8,13 @@ import {
   NavItem,
   NavLink,
   Nav,
+  Spinner
 } from "reactstrap";
 import classnames from "classnames";
 import Axios from "axios";
 import  baseUrl  from "utils/baseUrl";
 
-const CCReport = () => {
+const CCReport = (props) => {
   const [bulkType, setBulkType] = useState("all");
 
   var theads = [
@@ -30,9 +31,11 @@ const CCReport = () => {
   ];
   const [collValues, setCollValues] = useState([]);
   const [salesValues, setSalesValues] = useState([]);
+  const [stockValues, setStockValues] = useState([]);
 
   //fetching data
   useEffect(() => {
+    
     Axios.get( `${baseUrl}/cccollection`, {
       params: { ccid: "11KMKY01", category: `${bulkType}` },
     })
@@ -45,11 +48,20 @@ const CCReport = () => {
       params: { ccid: "11KMKY01", category: `${bulkType}` },
     })
       .then((jsonRes) => {
-        console.log(jsonRes.data.items);
+       
         setSalesValues(jsonRes.data.items);
       })
       .catch((err) => console.log(err));
-    //console.log(salesValues);
+    
+      Axios.get(`${baseUrl}/cstock`, {
+        params: { ccid: "11KMKY01", category: `${bulkType}` },
+      })
+        .then((jsonRes) => {
+         
+          setStockValues(jsonRes.data.item_stock);
+        })
+        .catch((err) => console.log(err));
+  
   }, [bulkType]);
 
   const toggleNavs = (e, index) => {
@@ -82,7 +94,7 @@ const CCReport = () => {
                   <span className="d-md-none">All</span>
                 </NavLink>
               </NavItem>
-              <NavItem className="col-3">
+              <NavItem className="col-2 offset-3">
                 <NavLink
                   className={classnames("py-2 px-3", {
                     active: bulkType === "local",
@@ -92,10 +104,10 @@ const CCReport = () => {
                   onClick={(e) => toggleNavs(e, "local")}
                 >
                   <span className="d-none d-md-block text-center">Local</span>
-                  <span className="d-md-none">Local</span>
+                  <span className="d-md-none">L</span>
                 </NavLink>
               </NavItem>
-              <NavItem className="col-3">
+              <NavItem className="col-2 ">
                 <NavLink
                   className={classnames("py-2 px-3", {
                     active: bulkType === "gpa",
@@ -104,10 +116,10 @@ const CCReport = () => {
                   onClick={(e) => toggleNavs(e, "gpa")}
                 >
                   <span className="d-none d-md-block text-center">GPA</span>
-                  <span className="d-md-none">GPA</span>
+                  <span className="d-md-none">G</span>
                 </NavLink>
               </NavItem>
-              <NavItem className="col-3">
+              <NavItem className="col-2">
                 <NavLink
                   className={classnames("py-2 px-3", {
                     active: bulkType === "organic",
@@ -117,7 +129,7 @@ const CCReport = () => {
                   onClick={(e) => toggleNavs(e, "organic")}
                 >
                   <span className="d-none d-md-block text-center">Organic</span>
-                  <span className="d-md-none">Organic</span>
+                  <span className="d-md-none">O</span>
                 </NavLink>
               </NavItem>
             </Nav>
@@ -135,8 +147,10 @@ const CCReport = () => {
               </tr>
             </thead>
             <tbody>
-              {salesValues.length === 0 || collValues.length === 0 ? (
-                <tbody></tbody>
+              {salesValues.length === 0 || collValues.length === 0|| stockValues.length === 0 ? (
+                <tbody><Spinner>
+                <span className=" sr-only">Loading...</span>
+              </Spinner></tbody>
               ) : (
                 collValues.map((rowdata, index) => {
                   return (
@@ -154,7 +168,7 @@ const CCReport = () => {
                           salesValues[index].sales_rate}
                       </td>
                       <td>
-                        {rowdata.qty_recieved - salesValues[index].qty_sold}
+                        {stockValues[index].stock+(rowdata.qty_recieved - salesValues[index].qty_sold)}
                       </td>
                     </tr>
                   );

@@ -62,7 +62,8 @@ const Login = ({ setIsLoggedIn }) => {
     }
 
   }
-  return (
+
+    return (
     <>
       <Col lg={{size:"4",offset:"4"}} md={{size:"6",offset:"3"}} sm={{size:"10",offset:"1"}} className="mt-7">
         <Card className="bg-dark shadow border-0">
